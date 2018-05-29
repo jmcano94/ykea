@@ -26,7 +26,7 @@ SECRET_KEY = '6yxdxs@5di*$an#6^+fo&@zl@plxai0@)d49(iv-2ggg3$r5r5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokupp.com']
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 #Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
