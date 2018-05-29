@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'ykea/CSS/base.css' %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .navbar-brand {
+            padding: 0px;
+        }
+        .navbar-brand>img {
+            height: 100%;
+            width: auto;
+        }
+        .navbar {
+            margin-bottom: 50px;
+            border-radius: 0;
+            position: -webkit-sticky; /* Safari */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .jumbotron {
+            margin-bottom: 0;
+            max-height: 250px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container text-center">
+    <img src="{% static 'ykea/img/Ykea-logo-retallat.png' %}" style="width:40%;">
+    <p style="padding-top: 1%">Furniture, lighting and accessories for all tastes.</p>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'ykea/img/Ykea-logo-retallat.png' %}"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li class="dropdown ">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu" style="position:absolute;">
+            {% if categories %}
+            {% for cat in categories %}
+            <li style=" z-index: auto"><a href="{% url 'items' cat.0%}">{{cat.1}}</a> </li>
+            {% endfor %}
+            {% endif%}
+        </ul>
+      </li>
+      </ul>
+        <ul class=" nav navbar-nav">
+                <li><a href="{% url 'comparator' %}">Comparator</a></li>
+
+        </ul>
+      <ul class="nav navbar-nav navbar-right">
+          {% if request.user.is_authenticated %}
+            <li><a href="{% url 'logout' %}?next={% url 'index' %}"><span class="glyphicon glyphicon-user"></span>{{ user.username }}(logout)</a></li>
+          {% else %}
+            <li><a href="{% url 'login' %}?next={% url 'index' %}"><span class="glyphicon glyphicon-user"></span>Login</a></li>
+
+          {% endif %}
+        <li><a href="{% url 'shoppingcart' %}"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{% block content %}
+{% endblock %}
+<br>
+<footer class="container-fluid text-center">
+  <p>Authors: Jose Manuel Cano, Marc Calviño i Cornudella.</p>
+
+</footer>
+
+{% block js %}
+{% endblock %}
+
+</body>
+</html>

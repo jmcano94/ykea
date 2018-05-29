@@ -1,0 +1,158 @@
+[
+  {
+    "model": "ykea.Item",
+    "pk": 1,
+    "fields": {
+      "item_number": "1",
+      "name": "DEKLIRFÄK",
+      "description" :"Divan bed, Hyllestad firm, Tustna dark grey",
+      "price" : "1488",
+      "is_new" : "True",
+      "size" : "160x200 cm",
+      "category" : "beds"
+    }
+  },
+   {
+   "model": "ykea.Item",
+    "pk": 2,
+    "fields": {
+      "item_number": "2",
+      "name": "LISBAÖFJK",
+      "description" :"Table, ash veneer",
+      "price" : "99",
+      "is_new" : "True",
+      "size" : "140x78 cm",
+      "category" : "table"
+    }
+  },
+  {
+    "model": "ykea.Item",
+    "pk": 3,
+    "fields": {
+      "item_number": "3",
+      "name": "HAKÖDD",
+      "description" :"Wardrobe, Tustna dark grey",
+      "price" : "500",
+      "is_new" : "True",
+      "size" : "80x210 cm",
+      "category" : "furn"
+    }
+  },
+   {
+   "model": "ykea.Item",
+    "pk": 4,
+    "fields": {
+      "item_number": "4",
+      "name": "RITA",
+      "description" :"Dinner Table",
+      "price" : "235",
+      "is_new" : "True",
+      "size" : "150x60 cm",
+      "category" : "table"
+    }
+  },
+  {
+    "model": "ykea.Item",
+    "pk": 5,
+    "fields": {
+      "item_number": "5",
+      "name": "TÖHR",
+      "description" :"Moder bed, with lightnings drawn",
+      "price" : "3000",
+      "is_new" : "True",
+      "size" : "200x300 cm",
+      "category" : "beds"
+    }
+  },
+   {
+   "model": "ykea.Item",
+    "pk": 6,
+    "fields": {
+      "item_number": "6",
+      "name": "FUSGOVTÖ",
+      "description" :"Library shelf, made of wood",
+      "price" : "10",
+      "is_new" : "True",
+      "size" : "100x30 cm",
+      "category" : "furn"
+    }
+  },
+   {
+   "model": "ykea.Item",
+    "pk": 7,
+    "fields": {
+      "item_number": "7",
+      "name": "MESVËL",
+      "description" :"Stylish and round coffe table",
+      "price" : "79",
+      "is_new" : "True",
+      "size" : "90x90 cm",
+      "category" : "table"
+    }
+  },
+  {
+    "model": "ykea.Item",
+    "pk": 8,
+    "fields": {
+      "item_number": "8",
+      "name": "VYHÄMGËK",
+      "description" :"Small bed structure for one person",
+      "price" : "80",
+      "is_new" : "True",
+      "size" : "80x180 cm",
+      "category" : "beds"
+    }
+  },
+   {
+   "model": "ykea.Item",
+    "pk": 9,
+    "fields": {
+      "item_number": "9",
+      "name": "LYGHA",
+      "description" :"Folding chair multipurpose",
+      "price" : "19",
+      "is_new" : "True",
+      "size" : "35x35x100 cm",
+      "category" : "furn"
+    }
+  },
+  {
+    "model": "ykea.Item",
+    "pk": 10,
+    "fields": {
+      "item_number": "10",
+      "name": "TUROKIG",
+      "description" :"Outdoors table made of steel and canadian wood",
+      "price" : "598",
+      "is_new" : "True",
+      "size" : "100x100 cm",
+      "category" : "table"
+    }
+  },
+   {
+   "model": "ykea.Item",
+    "pk": 11,
+    "fields": {
+      "item_number": "11",
+      "name": "BERMYPKÖ",
+      "description" :"Bunk bed for 3 people",
+      "price" : "1569",
+      "is_new" : "True",
+      "size" : "200x200x300 cm",
+      "category" : "bed"
+    }
+  },
+  {
+    "model": "ykea.Item",
+    "pk": 12,
+    "fields": {
+      "item_number": "12",
+      "name": "HYGVOLÖFR",
+      "description" :"Classy sofa with chaise longue",
+      "price" : "1999",
+      "is_new" : "True",
+      "size" : "400x150x120 cm",
+      "category" : "furn"
+    }
+  }
+]

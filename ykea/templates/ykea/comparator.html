@@ -1,0 +1,111 @@
+{% extends 'ykea/base.html' %}
+{% block content %}
+<div class="container-fluid text-center" style=" z-index: -1">
+    <div class="col-sm-2 sidenav">
+    </div>
+    <div class="col-sm-8 text-left">
+        <div class="row content ">
+            <h1>Comparator</h1>
+            <hr>
+            <div class="row content">
+
+                <div class="row content">
+                    <div class="row content">
+                        <label for="category">Category</label>
+
+                        <select id="category">
+                            {% for cat in categories %}
+                            <option value="{{ cat.0 }}">{{ cat.1 }}</option>
+                           {% endfor %}
+                        </select>
+                    </div>
+                    <div class="row content">
+                        <label for="new">Is new?</label>
+                        <input type="checkbox" id="new" value="yes">
+                    </div>
+                    <div class="row content">
+                        <label for="price">Price</label>
+                        <input type="number" id="price" value="0">
+                    </div>
+
+                </div>
+
+                <div class="row content">
+                    <div class="col-sm-4"></div>
+                    <input type="button" onclick="searchItems()" name="search" id="search" value="Search">
+                    <div id="text" style="padding-top: 10px"></div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    {% block js %}
+        <script type="text/javascript">
+            function searchItems() {
+                let requests = [];
+                let ips = {{ ips | safe }};
+                let items = [];
+                let category = $('#category').val();
+                let price = $('#price').val();
+                let is_new = $('#new')[0].checked;
+                if (is_new) {
+                    is_new = 'yes';
+                } else {
+                    is_new = 'no';
+                }
+                let j = 1;
+
+                for (let i = 0; i < ips.length; i++) {
+                    requests.push(
+                        $.ajax(
+                            {   url: "http://" + ips[i] + "/ykea/api/items/?category=" + category + "\&new=" + is_new + "\&price=" + price,
+                                type: 'GET',
+                                dataType: 'json',
+                                success: [function (data){
+                                    for(let k = 0; k < data['results'].length; k++){
+                                        items.push(data['results'][k]);
+                                    }
+
+                                }]
+                            }
+                        )
+                    );
+
+                }
+
+                $.when.apply($, requests).then(function(){
+
+                    let html = document.getElementById("text").innerHTML;
+                    html = "";
+                    if(items.length > 0) {
+                        html += "<h4> Items Found:</h4>";
+                        html += "<ul>";
+                        console.log(items);
+                        items.sort(function (a, b) {
+                            return parseFloat(a.price) - parseFloat(b.price);
+                        });
+                        for (let i = 0; i < items.length; i++) {
+                            html += '<li>' + items[i]['name'] + ' - ' + items[i]['price'] + '€' + '- <a href="' + items[i]["url"] + '">' + items[i]["url"] + "</a> </li>";
+                        }
+                        html += "</ul>";
+                    }
+                    else{
+                        html += "<h4 No items found</h4";
+                    }
+                    document.getElementById("text").innerHTML = html;
+                })
+            }
+
+
+
+
+
+
+        </script>
+    {% endblock %}
+{% endblock %}
+

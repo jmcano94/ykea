@@ -1,0 +1,35 @@
+{% extends 'ykea/base.html' %}
+{% block content %}
+
+<div class="container-fluid text-center" style=" z-index: -1">
+<div class="col-sm-2 sidenav">
+    </div>
+    <div class="col-sm-8 text-left">
+        <div class="row content ">
+            <h1>{{item.name}}</h1>
+            <hr>
+            <div class="row content">
+                <div class="col-sm2 text-left">
+                    <p>{{item.description}}</p>
+                </div>
+                <div class="col-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body"><b>Category:</b> {{category}}</div>
+                        <div class="panel-body"><b>Reference:</b> {{item.item_number}}</div>
+                         <div class="panel-body"><b>Price:</b> {{item.price}}€</div>
+                        {% if item.is_new %}
+                         <div class="panel-body"><b>New</b></div>
+                        {% else %}
+                            <div class="panel-body"><b>Second Hand</b></div>
+                        {% endif %}
+                         <div class="panel-body"><b>Size:</b> {{item.size}}</div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

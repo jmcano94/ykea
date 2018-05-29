@@ -1,0 +1,42 @@
+{% extends 'ykea/base.html' %}
+{% block content %}
+<div class="container-fluid text-center" style=" z-index: -1">
+<div class="col-sm-2 sidenav">
+    </div>
+    <div class="col-sm-8 text-left">
+        <div class="row content ">
+            <h1>Shopping Cart</h1>
+            <hr>
+            <div class="row content">
+                {% if shoppingCart %}
+                    <form action="{% url 'process_cart'%}" method="post">
+                    {% csrf_token %}
+                    {% for item_cart in shoppingCart %}
+                        <div class="row content">
+                            <div class="col-sm-2">
+                                <label>{{ item_cart.item.name }}</label>
+                            </div>
+                            <div class="col-sm-2">
+                            <input type="number" name="quantity{{ item_cart.id }}"
+                                   id="quantity{{ item_cart.id }}" min="1"  style="width: 3em;" value="{{ item_cart.amount }}"/>
+                                <input type="submit" name="delete{{ item_cart.id }}"
+                                       id="delete{{ item_cart.id }}" value="Delete">
+                            </div>
+                        </div>
+                        {% endfor %}
+                    <div class="row content">
+                        <div class="col-sm-4"></div>
+                        <input type="submit" name="checkout" id="checkout" value="Checkout">
+                    </div>
+
+                    </form>
+
+                {% else %}
+                    <p>No items have been added to the cart yet</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

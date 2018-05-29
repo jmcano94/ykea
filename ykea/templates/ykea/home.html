@@ -1,0 +1,48 @@
+{% extends 'ykea/base.html' %}
+
+{% block content %}
+    <div class="container-fluid text-center" style=" z-index: -1">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+    </div>
+    <div class="col-sm-8 text-center">
+      <h1>What is YKEA?</h1>
+        <p>We are an online shop that offers a variety of furniture, lighting, accesories and home solutions at all prices. Our motto is "For all Tastes!", from classy beds and wardrobes to fancy chairs and incredible lights! </p>
+        <p>Our range of products is enormous and we have split them in different categories so it is easier for our costumers to find what they are looking for, and help them discover new ideas.</p>
+        <hr>
+      <h3>Our Categories:</h3>
+    <div class="col-sm-4 text-left">
+        {% if categories %}
+        <ul>
+            {% for cat in categories|slice:":6" %}
+    	        <li><a href="{% url 'items' cat.0%}">{{cat.1}}</a></li>
+            {% endfor %}
+         </ul>
+        {% endif %}
+    </div>
+    <div class="col-sm-4 text-left">
+        {% if categories %}
+        <ul>
+            {% for cat in categories|slice:"6:12" %}
+    	        <li><a href="{% url 'items' cat.0%}">{{cat.1}}</a></li>
+            {% endfor %}
+         </ul>
+        {% endif %}
+    </div>
+    <div class="col-sm-4 text-left">
+        {% if categories %}
+        <ul>
+            {% for cat in categories|slice:"12:18" %}
+    	        <li><a href="{% url 'items' cat.0%}">{{cat.1}}</a></li>
+            {% endfor %}
+         </ul>
+        {% endif %}
+    </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+

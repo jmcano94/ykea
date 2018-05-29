@@ -1,0 +1,43 @@
+{% extends 'ykea/base.html' %}
+{% block content %}
+<div class="container-fluid text-center" style=" z-index: -1">
+<div class="col-sm-2 sidenav">
+    </div>
+    <div class="col-sm-8 text-left">
+        <div class="row content ">
+            <h1>Your Bill</h1>
+            <hr>
+            <div class="row content">
+                {% if bill %}
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Item</th>
+                            <th>Price</th>
+                            <th>Units</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                    {% for item_bill in bill.itembill_set.all %}
+                            <tr>
+                                <td>{{ item_bill.item.name }}</td>
+                                <td>{{ item_bill.item.price }}€</td>
+                                <td>{{ item_bill.amount}}</td>
+                            </tr>
+                    {% endfor %}
+                            <tr>
+                                <td></td>
+                                <td><b>Total</b></td>
+                                <td>{{ bill.total }}€</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>No items have been added to the cart yet</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
