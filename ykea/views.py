@@ -220,7 +220,7 @@ def register(request):
         if form.is_valid():
             new_user = form.save()
             customer = Customer(user=new_user)
-            customer.money = 0
+            customer.money = 100000000
             customer.save()
             auth.login(request, new_user)
             return HttpResponseRedirect(reverse("index"))
