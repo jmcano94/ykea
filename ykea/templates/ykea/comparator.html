@@ -62,7 +62,7 @@
                 for (let i = 0; i < ips.length; i++) {
                     requests.push(
                         $.ajax(
-                            {   url: "http://" + ips[i] + "/ykea/api/items/?category=" + category + "\&new=" + is_new + "\&price=" + price,
+                            {   url: "http://" + ips[i] + "/api/items/?category=" + category + "\&new=" + is_new + "\&price=" + price,
                                 type: 'GET',
                                 dataType: 'json',
                                 success: [function (data){

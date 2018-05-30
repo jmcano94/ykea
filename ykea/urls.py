@@ -3,7 +3,7 @@ from django.contrib.auth.views import login, logout
 from rest_framework import routers
 from ykea import views
 
-listOfAddresses = ['127.0.0.1:8000', '127.0.0.1:8000']
+listOfAddresses = ['sd2018-ykea-b2.herokuapp.com']
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^items/$', views.items, name='items'),
