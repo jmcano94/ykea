@@ -154,3 +154,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 LOGIN_URL = '/ykea/accounts/login/'
+
+try:
+    from ykea.local_settings import *
+except ImportError:
+    # No local settings was found, skipping.
+    pass
