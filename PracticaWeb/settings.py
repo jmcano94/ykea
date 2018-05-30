@@ -150,7 +150,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-LOGIN_URL = '/ykea/accounts/login/'
+LOGIN_URL = '/accounts/login/'
 
 try:
     from ykea.local_settings import *
