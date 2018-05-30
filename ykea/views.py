@@ -230,7 +230,7 @@ def register(request):
         'form': form,
     })
 
-@login_required
+
 def comparator(request, ips):
     categories = Item.CATEGORIES
 
