@@ -84,7 +84,6 @@
                     if(items.length > 0) {
                         html += "<h4> Items Found:</h4>";
                         html += "<ul>";
-                        console.log(items);
                         items.sort(function (a, b) {
                             return parseFloat(a.price) - parseFloat(b.price);
                         });
