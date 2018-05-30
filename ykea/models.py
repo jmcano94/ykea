@@ -30,8 +30,8 @@ class Item(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     is_new = models.BooleanField()
     size = models.CharField(max_length=40)
-    instructions = models.FileField()
-    featured_photo = models.ImageField()
+    instructions = models.FileField(upload_to="instructions")
+    featured_photo = models.ImageField(upload_to="photos")
     category = models.CharField(max_length=5, choices=CATEGORIES)
 
     def __str__(self):
