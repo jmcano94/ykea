@@ -61,7 +61,7 @@
                 for (let i = 0; i < ips.length; i++) {
                     requests.push(
                         $.ajax(
-                            {   url: "https://" + ips[i] + "/api/items/?category=" + category + "\&new=" + is_new + "\&price=" + price,
+                            {   url: "https://" + ips[i] + ".herokuapp.com/api/items/?category=" + category + "\&new=" + is_new + "\&price=" + price,
                                 type: 'GET',
                                 dataType: 'json',
                                 success: [function (data){
