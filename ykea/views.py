@@ -127,13 +127,14 @@ def shoppingcart(request):
     return HttpResponseRedirect(reverse('buy'))
 
 @login_required
-def buy(request):
+def buy(request,error=False):
     sc_id = request.session["shoppingCart"]
     sc = Shoppingcart.objects.get(id=sc_id)
 
     context = {
         'shoppingCart': sc.itemcart_set.all(),
-        'categories': Item.CATEGORIES
+        'categories': Item.CATEGORIES,
+        'error': error
     }
 
     return render(request, 'ykea/shoppingcart.html', context)
@@ -160,7 +161,7 @@ def process_cart(request):
             customer.save()
             return HttpResponseRedirect(reverse('checkout'))
         else:
-            return HttpResponseRedirect(reverse('buy'))
+            return HttpResponseRedirect(reverse('buy'), kwargs={'error': True})
     else:
         for key in request.POST:
             if key.startswith("delete"):
