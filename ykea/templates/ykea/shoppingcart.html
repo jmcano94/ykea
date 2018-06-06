@@ -7,10 +7,11 @@
         <div class="row content ">
             <h1>Shopping Cart</h1>
             <hr>
-            {% if error %}
-        <div class="alert-danger" role="alert">
-            <p>You do not have enough money to buy these products</p>
-        </div>
+            {% if billTotal > userMoney %}
+            <div class="alert-danger"  id="alert">
+                <p>Oops! It seems you do not have enough money to buy these products! Delete some of them or reduce the quantities and press "Checkout" again</p>
+            </div>
+            {% endif %}
             <div class="row content">
                 {% if shoppingCart %}
                     <form action="{% url 'process_cart'%}" method="post">
@@ -30,11 +31,9 @@
                         {% endfor %}
                     <div class="row content">
                         <div class="col-sm-4"></div>
-                        <butotn  name="checkout" id="checkout" onClick="checkMoney()" value="Checkout">
+                        <input type="submit" value="Checkout" id="checkout" name="checkout" >
                     </div>
-
                     </form>
-
                 {% else %}
                     <p>No items have been added to the cart yet</p>
                 {% endif %}

@@ -127,14 +127,20 @@ def shoppingcart(request):
     return HttpResponseRedirect(reverse('buy'))
 
 @login_required
-def buy(request,error=False):
+def buy(request):
+    if "shoppingCart" not in request.session:
+        return HttpResponseRedirect(reverse('index'))
     sc_id = request.session["shoppingCart"]
     sc = Shoppingcart.objects.get(id=sc_id)
-
+    customer = Customer.objects.get(user=request.user)
+    total = 0
+    for item_cart in sc.itemcart_set.all():
+        total = total + item_cart.amount * item_cart.item.price
     context = {
         'shoppingCart': sc.itemcart_set.all(),
         'categories': Item.CATEGORIES,
-        'error': error
+        'userMoney': customer.money,
+        'billTotal': total
     }
 
     return render(request, 'ykea/shoppingcart.html', context)
@@ -161,7 +167,7 @@ def process_cart(request):
             customer.save()
             return HttpResponseRedirect(reverse('checkout'))
         else:
-            return HttpResponseRedirect(reverse('buy'), kwargs={'error': True})
+            return HttpResponseRedirect(reverse('buy'))
     else:
         for key in request.POST:
             if key.startswith("delete"):
@@ -169,9 +175,12 @@ def process_cart(request):
                 print(itemCart_id)
                 ItemCart.objects.get(id=itemCart_id).delete()
                 return HttpResponseRedirect(reverse('buy'))
+    return HttpResponseRedirect(reverse('index'))
 
 
 def checkout(request):
+    if "shoppingCart" not in request.session:
+        return HttpResponseRedirect(reverse('index'))
     sc_id = request.session["shoppingCart"]
     sc = Shoppingcart.objects.get(id=sc_id)
     del request.session["shoppingCart"]
@@ -221,7 +230,7 @@ def register(request):
         if form.is_valid():
             new_user = form.save()
             customer = Customer(user=new_user)
-            customer.money = 100000000
+            customer.money = 10.000
             customer.save()
             auth.login(request, new_user)
             return HttpResponseRedirect(reverse("index"))
